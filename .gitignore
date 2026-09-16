@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+.env
+.env.local
+
+# ---- 构建中间产物 ----
+_ud/
+.archify-*

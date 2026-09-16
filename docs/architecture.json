@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "智慧人资平台 · 考勤薪酬自动化架构",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "viewBox": [1090, 570],
+    "output": "docs/architecture.html"
+  },
+  "components": [
+    { "id": "user", "type": "external", "label": "HR 专员", "sublabel": "浏览器访问", "pos": [24, 262], "size": [136, 62] },
+    { "id": "fe", "type": "frontend", "label": "React 前端", "sublabel": "6 个业务页面", "pos": [212, 254], "size": [152, 78], "tag": "TS + Tailwind" },
+    { "id": "api", "type": "backend", "label": "Express API", "sublabel": "REST 接口层", "pos": [416, 254], "size": [152, 78], "tag": "Node.js" },
+
+    { "id": "engine", "type": "backend", "label": "规则引擎", "sublabel": "规则即数据 · 可启停", "pos": [648, 92], "size": [166, 66], "tag": "49 条 · 带法规依据" },
+    { "id": "attend", "type": "backend", "label": "考勤服务", "sublabel": "打卡判定 · 异常识别", "pos": [648, 212], "size": [166, 66] },
+    { "id": "salary", "type": "backend", "label": "薪酬服务", "sublabel": "12 步公式链", "pos": [648, 332], "size": [166, 66], "tag": "生成审计轨迹" },
+
+    { "id": "db", "type": "database", "label": "SQLite", "sublabel": "规则 / 员工 / 考勤 / 工资", "pos": [868, 254], "size": [152, 78] }
+  ],
+  "boundaries": [
+    { "kind": "security-group", "label": "业务服务层（统一受规则引擎驱动）", "wraps": ["engine", "attend", "salary"] },
+    { "kind": "security-group", "label": "容器化部署（Dockerfile + Railway + Render）", "wraps": ["api", "engine", "attend", "salary", "db"] }
+  ],
+  "connections": [
+    { "id": "user-fe", "from": "user", "to": "fe", "variant": "emphasis" },
+    { "id": "fe-api", "from": "fe", "to": "api", "label": "HTTP / JSON", "variant": "emphasis", "labelDy": -33 },
+    { "id": "api-engine", "from": "api", "to": "engine" },
+    { "id": "api-attend", "from": "api", "to": "attend" },
+    { "id": "api-salary", "from": "api", "to": "salary" },
+    { "id": "engine-db", "from": "engine", "to": "db", "variant": "dashed" },
+    { "id": "attend-db", "from": "attend", "to": "db", "variant": "dashed" },
+    { "id": "salary-db", "from": "salary", "to": "db", "variant": "dashed" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "核心设计：规则即数据，不是硬编码",
+      "items": [
+        "考勤与薪酬规则存在数据库表里，不在代码里写 if-else",
+        "每条规则结构：condition（触发条件）+ formula（计算式）+ priority（冲突优先级）",
+        "HR 可在后台可视化增删改查、启用/停用，改规则不需要改代码、不需要重新部署",
+        "冬夏令时为例：冬令时 8:30–17:30，夏令时 8:00–17:00，靠 season 条件自动切换"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "可审计性：每条规则可溯源到制度条款",
+      "items": [
+        "每条规则带 legal_basis 字段，标注依据的制度文件与条款",
+        "例：冬令时规则 → 「康源发〔2024〕06号 第三节第一条」",
+        "带 version 字段做制度版本管理，制度改版时规则可并存对照",
+        "薪酬计算生成审计轨迹，12 步公式链每一步可回溯"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "落地情况与边界",
+      "items": [
+        "成品 MVP，业务逻辑与界面完整，未投入实际公司运行",
+        "员工/薪资为模拟生成数据（seed.js 随机取名 + 岗位基准薪）",
+        "部署方式：Dockerfile 多阶段构建 + Railway / Render 配置已就绪",
+        "踩坑记录：better-sqlite3 在 Railway Linux 需原生编译，改用 Dockerfile 构建器解决"
+      ]
+    }
+  ]
+}
