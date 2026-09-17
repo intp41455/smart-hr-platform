@@ -1,16 +1,16 @@
 @echo off
 chcp 65001 >nul
-title 康源智慧人资平台 - 启动中
-cd /d C:\Users\intpj\WorkBuddy\2026-08-10-23-26-39\smart-hr-platform
+title 智慧人资平台 - 启动中
+cd /d <用户目录>\WorkBuddy\2026-08-10-23-26-39\smart-hr-platform
 
 echo ========================================
-echo   康源智慧人资平台 - 一键启动
+echo   智慧人资平台 - 一键启动
 echo ========================================
 echo.
 
 REM 启动后端 (Node, 端口 3001)
 echo [1/2] 正在启动后端服务 (端口 3001)...
-start "HR后端" "C:\Users\intpj\.workbuddy\binaries\node\versions\22.22.2\node.exe" server/index.js
+start "HR后端" "<用户目录>\.workbuddy\binaries\node\versions\22.22.2\node.exe" server/index.js
 
 REM 等待后端就绪
 timeout /t 3 /nobreak >nul
@@ -26,4 +26,4 @@ echo   (如同事用IP可访问, 但IP会变, 建议用电脑名)
 echo ========================================
 echo.
 
-"C:\Users\intpj\.workbuddy\binaries\node\versions\22.22.2\node.exe" node_modules/vite/bin/vite.js --port 5173 --host 0.0.0.0
+"<用户目录>\.workbuddy\binaries\node\versions\22.22.2\node.exe" node_modules/vite/bin/vite.js --port 5173 --host 0.0.0.0

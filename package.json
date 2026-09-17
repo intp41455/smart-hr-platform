@@ -1,7 +1,7 @@
 {
   "name": "smart-hr-platform",
   "version": "1.0.0",
-  "description": "康源集团智慧化人资系统流程平台",
+  "description": "示例集团智慧化人资系统流程平台",
   "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",

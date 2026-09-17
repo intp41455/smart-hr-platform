@@ -1,13 +1,13 @@
-// 种子数据 - 康源集团模拟员工数据（基于实际组织架构）
+// 种子数据 - 示例集团模拟员工数据（基于实际组织架构）
 import { db, initDB } from './db.js';
 import { syncRules } from './services/rule-engine.js';
 import { nanoid } from 'nanoid';
 
 const ENTITIES = [
-  '康源福祉教育科技有限公司',
-  '上海康源博曜养老服务公司',
-  '康源美宏养老服务有限公司',
-  '康源中成养老服务有限公司'
+  '示例教育科技有限公司',
+  '示例（上海）养老服务有限公司',
+  '示例养老服务有限公司',
+  '示例社区服务有限公司'
 ];
 
 const BRANCHES = [

@@ -371,7 +371,7 @@ export default function Rules({ API }: any) {
       {/* Footer */}
       <div className="flex items-center justify-between text-xs text-gray-400 px-1">
         <span>显示 {filtered.length} / {rules.length} 条 · 数据库为唯一数据源</span>
-        <span>规则版本 v2024.06 · 基于康源集团考勤与薪酬管理制度</span>
+        <span>规则版本 v2024.06 · 基于示例集团考勤与薪酬管理制度</span>
       </div>
     </div>
   )

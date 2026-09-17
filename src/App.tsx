@@ -55,7 +55,7 @@ export default function App() {
               K
             </div>
             <div>
-              <h1 className="text-base font-bold text-gray-900 tracking-tight">康源智慧人资</h1>
+              <h1 className="text-base font-bold text-gray-900 tracking-tight">示例集团智慧人资</h1>
               <p className="text-[11px] text-gray-400">Smart HR Platform</p>
             </div>
           </div>

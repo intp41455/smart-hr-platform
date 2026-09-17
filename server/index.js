@@ -37,7 +37,7 @@ app.get('*', (req, res) => {
   } else {
     res.sendFile(join(__dirname, '..', 'dist', 'index.html'), (err) => {
       if (err) res.status(200).json({ 
-        message: '康源智慧人资系统 API',
+        message: '示例集团智慧人资系统 API',
         docs: '/api/health',
         note: '前端未构建，请运行 npm run build'
       });
@@ -71,7 +71,7 @@ if (empCount.c === 0) {
 
 app.listen(PORT, () => {
   console.log(`\n========================================`);
-  console.log(`  康源智慧人资系统 - 服务器已启动`);
+  console.log(`  示例集团智慧人资系统 - 服务器已启动`);
   console.log(`  API: http://localhost:${PORT}/api`);
   console.log(`  前端: http://localhost:${PORT} (需先构建)`);
   console.log(`  开发模式: http://localhost:5173 (Vite)`);

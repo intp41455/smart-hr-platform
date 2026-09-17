@@ -51,7 +51,7 @@
   version:     '2024.06',             // 制度版本
   active:      1,                     // 可启停
   description: '冬令时（11月-4月）：8:30-17:30，午休1小时',
-  legal_basis: '康源发〔2024〕06号 第三节第一条'    // ← 依据的制度条款
+  legal_basis: '示例发〔2024〕06号 第三节第一条'    // ← 依据的制度条款
 }
 ```
 
@@ -121,7 +121,7 @@ smart-hr-platform/
 │       └── salary.js          # 薪酬计算（12 步公式链）
 ├── Dockerfile
 ├── railway.json / render.yaml
-└── docs/康源智慧人资平台-使用手册.md
+└── docs/智慧人资平台-使用手册.md
 ```
 
 ---

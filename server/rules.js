@@ -1,5 +1,5 @@
-// 康源集团考勤与薪酬规则引擎 - 规则定义库
-// 基于康源发〔2024〕06号考勤管理制度及薪酬体系
+// 示例集团考勤与薪酬规则引擎 - 规则定义库
+// 基于示例发〔2024〕06号考勤管理制度及薪酬体系
 
 export const ATTENDANCE_RULES = [
   // === 工时制度规则 ===
@@ -8,35 +8,35 @@ export const ATTENDANCE_RULES = [
     formula: 'scheduled_start = "08:30"; scheduled_end = "17:30"; lunch_break = 60',
     priority: 10, version: '2024.06', active: 1,
     description: '冬令时（11月-4月）：8:30-17:30，午休1小时',
-    legal_basis: '康源发〔2024〕06号 第三节第一条' },
+    legal_basis: '示例发〔2024〕06号 第三节第一条' },
 
   { rule_id: 'R-ATT-002', name: '标准工时-夏令时', category: 'attendance', sub_category: 'worktime',
     condition: 'shift_type == "normal" && season == "summer"',
     formula: 'scheduled_start = "08:00"; scheduled_end = "17:00"; lunch_break = 60',
     priority: 10, version: '2024.06', active: 1,
     description: '夏令时（5月-10月）：8:00-17:00，午休1小时',
-    legal_basis: '康源发〔2024〕06号 第三节第一条' },
+    legal_basis: '示例发〔2024〕06号 第三节第一条' },
 
   { rule_id: 'R-ATT-003', name: '护理岗A班', category: 'attendance', sub_category: 'shift',
     condition: 'shift_type == "A"',
     formula: 'scheduled_start = "08:00"; scheduled_end = "16:00"',
     priority: 10, version: '2024.06', active: 1,
     description: 'A班：8:00-16:00',
-    legal_basis: '康源发〔2024〕06号 第三节第二条' },
+    legal_basis: '示例发〔2024〕06号 第三节第二条' },
 
   { rule_id: 'R-ATT-004', name: '护理岗P班', category: 'attendance', sub_category: 'shift',
     condition: 'shift_type == "P"',
     formula: 'scheduled_start = "16:00"; scheduled_end = "24:00"',
     priority: 10, version: '2024.06', active: 1,
     description: 'P班：16:00-24:00',
-    legal_basis: '康源发〔2024〕06号 第三节第二条' },
+    legal_basis: '示例发〔2024〕06号 第三节第二条' },
 
   { rule_id: 'R-ATT-005', name: '护理岗N班', category: 'attendance', sub_category: 'shift',
     condition: 'shift_type == "N"',
     formula: 'scheduled_start = "00:00"; scheduled_end = "08:00"; cross_midnight = true',
     priority: 10, version: '2024.06', active: 1,
     description: 'N班：0:00-8:00（跨午夜）',
-    legal_basis: '康源发〔2024〕06号 第三节第二条' },
+    legal_basis: '示例发〔2024〕06号 第三节第二条' },
 
   // === 迟到规则 ===
   { rule_id: 'R-ATT-010', name: '迟到1级', category: 'attendance', sub_category: 'late',
@@ -44,28 +44,28 @@ export const ATTENDANCE_RULES = [
     formula: 'deduction = 10; status = "late"',
     priority: 20, version: '2024.06', active: 1,
     description: '迟到1-5分钟，扣款10元',
-    legal_basis: '康源发〔2024〕06号 第四节第三条' },
+    legal_basis: '示例发〔2024〕06号 第四节第三条' },
 
   { rule_id: 'R-ATT-011', name: '迟到2级', category: 'attendance', sub_category: 'late',
     condition: 'late_minutes > 5 && late_minutes <= 15',
     formula: 'deduction = 30; status = "late"',
     priority: 21, version: '2024.06', active: 1,
     description: '迟到5-15分钟，扣款30元',
-    legal_basis: '康源发〔2024〕06号 第四节第三条' },
+    legal_basis: '示例发〔2024〕06号 第四节第三条' },
 
   { rule_id: 'R-ATT-012', name: '迟到3级', category: 'attendance', sub_category: 'late',
     condition: 'late_minutes > 15 && late_minutes <= 30',
     formula: 'deduction = 50; status = "late"',
     priority: 22, version: '2024.06', active: 1,
     description: '迟到15-30分钟，扣款50元',
-    legal_basis: '康源发〔2024〕06号 第四节第三条' },
+    legal_basis: '示例发〔2024〕06号 第四节第三条' },
 
   { rule_id: 'R-ATT-013', name: '迟到4级-旷工半天', category: 'attendance', sub_category: 'late',
     condition: 'late_minutes > 30',
     formula: 'deduction = daily_wage * 1.5; status = "absent_half"; absent_hours = 4',
     priority: 23, version: '2024.06', active: 1,
     description: '迟到超过30分钟，按旷工半天处理，扣1.5倍日工资',
-    legal_basis: '康源发〔2024〕06号 第四节第三条' },
+    legal_basis: '示例发〔2024〕06号 第四节第三条' },
 
   // === 早退规则 ===
   { rule_id: 'R-ATT-015', name: '早退1级', category: 'attendance', sub_category: 'early_leave',
@@ -73,28 +73,28 @@ export const ATTENDANCE_RULES = [
     formula: 'deduction = 10; status = "early_leave"',
     priority: 20, version: '2024.06', active: 1,
     description: '早退1-5分钟，扣款10元',
-    legal_basis: '康源发〔2024〕06号 第四节第四条' },
+    legal_basis: '示例发〔2024〕06号 第四节第四条' },
 
   { rule_id: 'R-ATT-016', name: '早退2级', category: 'attendance', sub_category: 'early_leave',
     condition: 'early_leave_minutes > 5 && early_leave_minutes <= 15',
     formula: 'deduction = 30; status = "early_leave"',
     priority: 21, version: '2024.06', active: 1,
     description: '早退5-15分钟，扣款30元',
-    legal_basis: '康源发〔2024〕06号 第四节第四条' },
+    legal_basis: '示例发〔2024〕06号 第四节第四条' },
 
   { rule_id: 'R-ATT-017', name: '早退3级', category: 'attendance', sub_category: 'early_leave',
     condition: 'early_leave_minutes > 15 && early_leave_minutes <= 30',
     formula: 'deduction = 50; status = "early_leave"',
     priority: 22, version: '2024.06', active: 1,
     description: '早退15-30分钟，扣款50元',
-    legal_basis: '康源发〔2024〕06号 第四节第四条' },
+    legal_basis: '示例发〔2024〕06号 第四节第四条' },
 
   { rule_id: 'R-ATT-018', name: '早退4级-旷工半天', category: 'attendance', sub_category: 'early_leave',
     condition: 'early_leave_minutes > 30',
     formula: 'deduction = daily_wage * 1.5; status = "absent_half"; absent_hours = 4',
     priority: 23, version: '2024.06', active: 1,
     description: '早退超过30分钟，按旷工半天处理',
-    legal_basis: '康源发〔2024〕06号 第四节第四条' },
+    legal_basis: '示例发〔2024〕06号 第四节第四条' },
 
   // === 旷工规则 ===
   { rule_id: 'R-ATT-020', name: '旷工半天', category: 'attendance', sub_category: 'absence',
@@ -102,21 +102,21 @@ export const ATTENDANCE_RULES = [
     formula: 'deduction = daily_wage * 1.5',
     priority: 30, version: '2024.06', active: 1,
     description: '旷工半天，扣1.5倍日工资',
-    legal_basis: '康源发〔2024〕06号 第四节第五条' },
+    legal_basis: '示例发〔2024〕06号 第四节第五条' },
 
   { rule_id: 'R-ATT-021', name: '旷工1天', category: 'attendance', sub_category: 'absence',
     condition: 'status == "absent"',
     formula: 'deduction = daily_wage * 3',
     priority: 31, version: '2024.06', active: 1,
     description: '旷工1天，扣3倍日工资',
-    legal_basis: '康源发〔2024〕06号 第四节第五条' },
+    legal_basis: '示例发〔2024〕06号 第四节第五条' },
 
   { rule_id: 'R-ATT-022', name: '连续旷工解除合同', category: 'attendance', sub_category: 'absence',
     condition: 'consecutive_absent_days >= 3 || annual_absent_days >= 5',
     formula: 'action = "terminate_contract"',
     priority: 50, version: '2024.06', active: 1,
     description: '连续旷工3天或年累计旷工5天，可解除劳动合同',
-    legal_basis: '康源发〔2024〕06号 第四节第五条' },
+    legal_basis: '示例发〔2024〕06号 第四节第五条' },
 
   // === 补卡规则 ===
   { rule_id: 'R-ATT-025', name: '补卡上限', category: 'attendance', sub_category: 'makeup',
@@ -124,7 +124,7 @@ export const ATTENDANCE_RULES = [
     formula: 'status = "missing_card"; deduction = daily_wage',
     priority: 25, version: '2024.06', active: 1,
     description: '每月补卡不超过3次，超次视为缺卡',
-    legal_basis: '康源发〔2024〕06号 第四节第六条' },
+    legal_basis: '示例发〔2024〕06号 第四节第六条' },
 
   // === 全勤奖规则 ===
   { rule_id: 'R-ATT-030', name: '全勤奖', category: 'attendance', sub_category: 'bonus',
@@ -132,7 +132,7 @@ export const ATTENDANCE_RULES = [
     formula: 'attendance_bonus = 100',
     priority: 40, version: '2024.06', active: 1,
     description: '当月无迟到/早退/缺卡/事假/病假，全勤奖100元',
-    legal_basis: '康源发〔2024〕06号 第四节第七条' },
+    legal_basis: '示例发〔2024〕06号 第四节第七条' },
 
   // === 假期规则 ===
   { rule_id: 'R-ATT-035', name: '病假1级', category: 'attendance', sub_category: 'sick_leave',
@@ -140,49 +140,49 @@ export const ATTENDANCE_RULES = [
     formula: 'pay_ratio = 0.8; deduction = daily_wage * (1 - 0.8) * sick_leave_days',
     priority: 30, version: '2024.06', active: 1,
     description: '病假≤7天，按基本工资80%计发',
-    legal_basis: '康源发〔2024〕06号 第五节第三条' },
+    legal_basis: '示例发〔2024〕06号 第五节第三条' },
 
   { rule_id: 'R-ATT-036', name: '病假2级', category: 'attendance', sub_category: 'sick_leave',
     condition: 'sick_leave_days > 7 && sick_leave_days <= 15',
     formula: 'pay_ratio = 0.5; deduction = daily_wage * (1 - 0.5) * sick_leave_days',
     priority: 31, version: '2024.06', active: 1,
     description: '病假7-15天，按基本工资50%计发',
-    legal_basis: '康源发〔2024〕06号 第五节第三条' },
+    legal_basis: '示例发〔2024〕06号 第五节第三条' },
 
   { rule_id: 'R-ATT-037', name: '病假3级', category: 'attendance', sub_category: 'sick_leave',
     condition: 'sick_leave_days > 15',
     formula: 'pay_ratio = min_wage * 0.8 / daily_wage; deduction = daily_wage * (1 - pay_ratio) * sick_leave_days',
     priority: 32, version: '2024.06', active: 1,
     description: '病假>15天，按最低工资80%计发',
-    legal_basis: '康源发〔2024〕06号 第五节第三条' },
+    legal_basis: '示例发〔2024〕06号 第五节第三条' },
 
   { rule_id: 'R-ATT-040', name: '事假', category: 'attendance', sub_category: 'personal_leave',
     condition: 'personal_leave_days > 0',
     formula: 'deduction = daily_wage * personal_leave_days',
     priority: 30, version: '2024.06', active: 1,
     description: '事假按日工资扣除',
-    legal_basis: '康源发〔2024〕06号 第五节第二条' },
+    legal_basis: '示例发〔2024〕06号 第五节第二条' },
 
   { rule_id: 'R-ATT-041', name: '年假-工龄1-10年', category: 'attendance', sub_category: 'annual_leave',
     condition: 'work_years >= 1 && work_years < 10',
     formula: 'annual_leave_days = 5',
     priority: 30, version: '2024.06', active: 1,
     description: '工龄1-10年，年假5天',
-    legal_basis: '康源发〔2024〕06号 第五节第四条' },
+    legal_basis: '示例发〔2024〕06号 第五节第四条' },
 
   { rule_id: 'R-ATT-042', name: '年假-工龄10-20年', category: 'attendance', sub_category: 'annual_leave',
     condition: 'work_years >= 10 && work_years < 20',
     formula: 'annual_leave_days = 10',
     priority: 31, version: '2024.06', active: 1,
     description: '工龄10-20年，年假10天',
-    legal_basis: '康源发〔2024〕06号 第五节第四条' },
+    legal_basis: '示例发〔2024〕06号 第五节第四条' },
 
   { rule_id: 'R-ATT-043', name: '年假-工龄20年以上', category: 'attendance', sub_category: 'annual_leave',
     condition: 'work_years >= 20',
     formula: 'annual_leave_days = 15',
     priority: 32, version: '2024.06', active: 1,
     description: '工龄20年以上，年假15天',
-    legal_basis: '康源发〔2024〕06号 第五节第四条' },
+    legal_basis: '示例发〔2024〕06号 第五节第四条' },
 
   // === 加班与存休规则 ===
   // 按制度：加班无加班费，仅公休日加班可累积存休（调休），工作日加班不计
@@ -191,28 +191,28 @@ export const ATTENDANCE_RULES = [
     formula: 'compensatory_hours = 0; note = "工作日加班不计存休"',
     priority: 40, version: '2024.06', active: 1,
     description: '工作日加班不计存休，不折算加班费',
-    legal_basis: '康源发〔2024〕06号 加班管理制度' },
+    legal_basis: '示例发〔2024〕06号 加班管理制度' },
 
   { rule_id: 'R-ATT-051', name: '公休日加班存休', category: 'attendance', sub_category: 'overtime',
     condition: 'overtime_type == "rest_day"',
     formula: 'compensatory_hours = overtime_hours; compensatory_pay = 0',
     priority: 41, version: '2024.06', active: 1,
     description: '公休日加班1小时=存休1小时，不折算加班费',
-    legal_basis: '康源发〔2024〕06号 加班管理制度' },
+    legal_basis: '示例发〔2024〕06号 加班管理制度' },
 
   { rule_id: 'R-ATT-052', name: '存休使用规则', category: 'attendance', sub_category: 'overtime',
     condition: 'leave_type == "compensatory"',
     formula: 'compensatory_balance -= leave_days * 8; note = "调休消耗存休"',
     priority: 42, version: '2024.06', active: 1,
     description: '调休假消耗已累积存休时长，不可跨公司使用',
-    legal_basis: '康源发〔2024〕06号 加班管理制度' },
+    legal_basis: '示例发〔2024〕06号 加班管理制度' },
 
   { rule_id: 'R-ATT-053', name: '存休有效期', category: 'attendance', sub_category: 'overtime',
     condition: 'always',
     formula: 'compensatory_expiry = current_year_end; unused_hours_expire',
     priority: 43, version: '2024.06', active: 1,
     description: '存休当年有效，年底清零，不可折现',
-    legal_basis: '康源发〔2024〕06号 加班管理制度' },
+    legal_basis: '示例发〔2024〕06号 加班管理制度' },
 ];
 
 export const SALARY_RULES = [
@@ -251,7 +251,7 @@ export const SALARY_RULES = [
     formula: 'attendance_bonus = 100',
     priority: 20, version: '2024.06', active: 1,
     description: '全勤奖100元/月',
-    legal_basis: '康源发〔2024〕06号 第四节第七条' },
+    legal_basis: '示例发〔2024〕06号 第四节第七条' },
 
   // === 工龄工资 ===
   { rule_id: 'R-SAL-015', name: '工龄工资', category: 'salary', sub_category: 'seniority',
@@ -267,28 +267,28 @@ export const SALARY_RULES = [
     formula: 'sick_deduction = daily_wage * (1 - sick_pay_ratio) * sick_leave_days',
     priority: 30, version: '2024.06', active: 1,
     description: '病假扣款 = 日工资 × (1-病假工资比例) × 病假天数',
-    legal_basis: '康源发〔2024〕06号 第五节第三条' },
+    legal_basis: '示例发〔2024〕06号 第五节第三条' },
 
   { rule_id: 'R-SAL-021', name: '事假扣款', category: 'salary', sub_category: 'deduction',
     condition: 'attendance.personal_leave_days > 0',
     formula: 'personal_leave_deduction = daily_wage * personal_leave_days',
     priority: 31, version: '2024.06', active: 1,
     description: '事假扣款 = 日工资 × 事假天数',
-    legal_basis: '康源发〔2024〕06号 第五节第二条' },
+    legal_basis: '示例发〔2024〕06号 第五节第二条' },
 
   { rule_id: 'R-SAL-022', name: '迟到扣款', category: 'salary', sub_category: 'deduction',
     condition: 'attendance.total_late_deduction > 0',
     formula: 'late_deduction = attendance.total_late_deduction',
     priority: 32, version: '2024.06', active: 1,
     description: '迟到扣款汇总（4级梯度）',
-    legal_basis: '康源发〔2024〕06号 第四节第三条' },
+    legal_basis: '示例发〔2024〕06号 第四节第三条' },
 
   { rule_id: 'R-SAL-023', name: '旷工扣款', category: 'salary', sub_category: 'deduction',
     condition: 'attendance.absence_days > 0',
     formula: 'absence_deduction = daily_wage * 3 * absence_days + daily_wage * 1.5 * absence_half_days',
     priority: 33, version: '2024.06', active: 1,
     description: '旷工扣款 = 日工资×3×全天 + 日工资×1.5×半天',
-    legal_basis: '康源发〔2024〕06号 第四节第五条' },
+    legal_basis: '示例发〔2024〕06号 第四节第五条' },
 
   // === 应发工资 ===
   { rule_id: 'R-SAL-030', name: '应发工资', category: 'salary', sub_category: 'gross',

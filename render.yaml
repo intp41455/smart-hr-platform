@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: kangyuan-smart-hr
+    name: smart-hr-platform
     runtime: node
     plan: free
     buildCommand: npm install && npm run build

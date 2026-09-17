@@ -21,10 +21,10 @@ export default function Employees({ selectedMonth, API, onSelect }: any) {
   const entities = [...new Set(employees.map(e => e.entity).filter(Boolean))]
 
   const entityColors: Record<string, string> = {
-    '康源福祉教育': 'bg-brand-50 text-brand-600 border-brand-200',
-    '上海康源博曜': 'bg-blue-50 text-blue-600 border-blue-200',
-    '康源美宏养老': 'bg-emerald-50 text-emerald-600 border-emerald-200',
-    '康源中成养老': 'bg-violet-50 text-violet-600 border-violet-200',
+    '示例集团福祉教育': 'bg-brand-50 text-brand-600 border-brand-200',
+    '上海示例集团博曜': 'bg-blue-50 text-blue-600 border-blue-200',
+    '示例集团养老': 'bg-emerald-50 text-emerald-600 border-emerald-200',
+    '示例集团中成养老': 'bg-violet-50 text-violet-600 border-violet-200',
   }
 
   return (
